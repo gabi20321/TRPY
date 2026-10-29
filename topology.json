@@ -1,0 +1,93 @@
+{
+    "192.168.1.1": {
+        "type": "router",
+        "hostname": "R1-Gateway",
+        "ip_address": "192.168.1.1",
+        "mac_address": "AA:BB:CC:00:01:01",
+        "status": "UP",
+        "links": {
+            "Gi0/0": {
+                "ip": "192.168.1.2",
+                "iface": "Fa0/1"
+            }
+        },
+        "routing_table": {
+            "192.168.1.0/24": "192.168.1.2"
+        }
+    },
+    "192.168.1.2": {
+        "type": "switch",
+        "hostname": "SW1-Access",
+        "ip_address": "192.168.1.2",
+        "mac_address": "AA:BB:CC:00:01:02",
+        "status": "UP",
+        "links": {
+            "Fa0/1": {
+                "ip": "192.168.1.1",
+                "iface": "Gi0/0"
+            },
+            "Fa0/2": {
+                "ip": "192.168.1.10",
+                "iface": "eth0"
+            },
+            "Fa0/4": {
+                "ip": "192.168.1.50",
+                "iface": "eth0"
+            }
+        },
+        "mac_table": {
+            "AA:BB:CC:00:01:01": 1,
+            "AA:BB:CC:00:01:10": 2,
+            "AA:BB:CC:00:01:50": 4
+        },
+        "total_ports": 24,
+        "ports": {
+            "1": {
+                "label": "R1-Uplink",
+                "device_ip": "192.168.1.1",
+                "vlan": 1,
+                "enabled": true
+            },
+            "2": {
+                "label": "PC-1",
+                "device_ip": "192.168.1.10",
+                "vlan": 1,
+                "enabled": true
+            },
+            "4": {
+                "label": "SRV-Data",
+                "device_ip": "192.168.1.50",
+                "vlan": 1,
+                "enabled": true
+            }
+        }
+    },
+    "192.168.1.10": {
+        "type": "host",
+        "hostname": "PC-1",
+        "ip_address": "192.168.1.10",
+        "mac_address": "AA:BB:CC:00:01:10",
+        "status": "UP",
+        "links": {
+            "eth0": {
+                "ip": "192.168.1.2",
+                "iface": "Fa0/2"
+            }
+        },
+        "role": "pc"
+    },
+    "192.168.1.50": {
+        "type": "server",
+        "hostname": "SRV-Data",
+        "ip_address": "192.168.1.50",
+        "mac_address": "AA:BB:CC:00:01:50",
+        "status": "UP",
+        "links": {
+            "eth0": {
+                "ip": "192.168.1.2",
+                "iface": "Fa0/4"
+            }
+        },
+        "role": "server"
+    }
+}
