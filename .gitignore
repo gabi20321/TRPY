@@ -1,0 +1,6 @@
+__pycache__/
+*.py[cod]
+test_topology_temp.json
+*.log
+soc_incidents_report.csv
+.pytest_cache/
